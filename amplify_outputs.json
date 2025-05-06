@@ -1,0 +1,59 @@
+{
+  "auth": {
+    "user_pool_id": "us-east-1_BMIIgP6A0",
+    "aws_region": "us-east-1",
+    "user_pool_client_id": "241r9d0sljequuv5ttrcnrrash",
+    "identity_pool_id": "us-east-1:345be3f5-ad23-4418-b547-a32a4d7c1649",
+    "mfa_methods": [],
+    "standard_required_attributes": [
+      "email"
+    ],
+    "username_attributes": [
+      "email"
+    ],
+    "user_verification_types": [
+      "email"
+    ],
+    "groups": [],
+    "mfa_configuration": "NONE",
+    "password_policy": {
+      "min_length": 8,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_symbols": true,
+      "require_uppercase": true
+    },
+    "unauthenticated_identities_enabled": true
+  },
+  "storage": {
+    "aws_region": "us-east-1",
+    "bucket_name": "amplify-amplify-ybenamin--qdatasourcebucketbucket7-s2x33k8emn6s",
+    "buckets": [
+      {
+        "name": "q-datasource-bucket",
+        "bucket_name": "amplify-amplify-ybenamin--qdatasourcebucketbucket7-s2x33k8emn6s",
+        "aws_region": "us-east-1",
+        "paths": {
+          "protected/*": {
+            "authenticated": [
+              "get",
+              "list"
+            ]
+          },
+          "protected/${cognito-identity.amazonaws.com:sub}/*": {
+            "entityidentity": [
+              "get",
+              "list",
+              "write",
+              "delete"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "version": "1.4",
+  "custom": {
+    "q_business_url": "https://bkzpcqq9.chat.qbusiness.us-east-1.on.aws/"
+  }
+}

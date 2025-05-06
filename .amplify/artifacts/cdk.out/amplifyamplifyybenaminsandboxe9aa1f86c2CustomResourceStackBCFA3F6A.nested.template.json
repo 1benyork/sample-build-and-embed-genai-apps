@@ -1,0 +1,1116 @@
+{
+ "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.16.1\",\"stackType\":\"custom\",\"metadata\":{}}",
+ "Resources": {
+  "Qapp": {
+   "Type": "AWS::QBusiness::Application",
+   "Properties": {
+    "AutoSubscriptionConfiguration": {
+     "AutoSubscribe": "ENABLED",
+     "DefaultSubscriptionType": "Q_LITE"
+    },
+    "Description": "CDK instantiated Amazon Q Business App",
+    "DisplayName": "Qapp",
+    "IdentityCenterInstanceArn": "arn:aws:sso:::instance/ssoins-722310414b9f5366",
+    "IdentityType": "AWS_IAM_IDC",
+    "RoleArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:iam::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":role/aws-service-role/qbusiness.amazonaws.com/AWSServiceRoleForQBusiness"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/Qapp"
+   }
+  },
+  "QApplicationServiceAccessRoleC2B6008A": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "qbusiness.amazonaws.com"
+       }
+      },
+      {
+       "Action": "sts:AssumeRole",
+       "Condition": {
+        "StringEquals": {
+         "aws:SourceAccount": {
+          "Ref": "AWS::AccountId"
+         }
+        },
+        "ArnLike": {
+         "aws:SourceArn": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:aws:qbusiness:us-east-1:",
+            {
+             "Ref": "AWS::AccountId"
+            },
+            ":application/*"
+           ]
+          ]
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "qbusiness.amazonaws.com"
+       },
+       "Sid": "AmazonQApplicationPermission"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "MaxSessionDuration": 3600,
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": "cloudwatch:PutMetricData",
+         "Condition": {
+          "StringEquals": {
+           "cloudwatch:namespace": "AWS/QBusiness"
+          }
+         },
+         "Effect": "Allow",
+         "Resource": "*",
+         "Sid": "AmazonQApplicationPutMetricDataPermission"
+        },
+        {
+         "Action": "logs:DescribeLogGroups",
+         "Effect": "Allow",
+         "Resource": "*",
+         "Sid": "AmazonQApplicationDescribeLogGroupsPermission"
+        },
+        {
+         "Action": "logs:CreateLogGroup",
+         "Effect": "Allow",
+         "Resource": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:aws:logs:us-east-1:",
+            {
+             "Ref": "AWS::AccountId"
+            },
+            ":log-group:/aws/qbusiness/*"
+           ]
+          ]
+         },
+         "Sid": "AmazonQApplicationCreateLogGroupPermission"
+        },
+        {
+         "Action": [
+          "logs:DescribeLogStreams",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+         ],
+         "Effect": "Allow",
+         "Resource": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:aws:logs:us-east-1:",
+            {
+             "Ref": "AWS::AccountId"
+            },
+            ":log-group:/aws/qbusiness/*:log-stream:*"
+           ]
+          ]
+         },
+         "Sid": "AmazonQApplicationLogStreamPermission"
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "ApplicationServiceAccessPolicy"
+     }
+    ],
+    "RoleName": "QApplicationServiceAccessRole",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QApplicationServiceAccessRole/Resource"
+   }
+  },
+  "QIndex": {
+   "Type": "AWS::QBusiness::Index",
+   "Properties": {
+    "ApplicationId": {
+     "Fn::GetAtt": [
+      "Qapp",
+      "ApplicationId"
+     ]
+    },
+    "CapacityConfiguration": {
+     "Units": 1
+    },
+    "Description": "CDK instantiated Amazon Q Business App index",
+    "DisplayName": "QIndex",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "Type": "STARTER"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QIndex"
+   }
+  },
+  "QRetriever": {
+   "Type": "AWS::QBusiness::Retriever",
+   "Properties": {
+    "ApplicationId": {
+     "Fn::GetAtt": [
+      "Qapp",
+      "ApplicationId"
+     ]
+    },
+    "Configuration": {
+     "NativeIndexConfiguration": {
+      "IndexId": {
+       "Fn::GetAtt": [
+        "QIndex",
+        "IndexId"
+       ]
+      }
+     }
+    },
+    "DisplayName": "QRetriever",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "Type": "NATIVE_INDEX"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QRetriever"
+   }
+  },
+  "QBusinessS3Role807810E1": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "qbusiness.amazonaws.com"
+       }
+      },
+      {
+       "Action": "sts:AssumeRole",
+       "Condition": {
+        "StringEquals": {
+         "aws:SourceAccount": {
+          "Ref": "AWS::AccountId"
+         }
+        },
+        "ArnLike": {
+         "aws:SourceArn": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:aws:qbusiness:us-east-1:",
+            {
+             "Ref": "AWS::AccountId"
+            },
+            ":application/",
+            {
+             "Fn::GetAtt": [
+              "Qapp",
+              "ApplicationId"
+             ]
+            }
+           ]
+          ]
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "qbusiness.amazonaws.com"
+       },
+       "Sid": "AllowsAmazonQToAssumeRoleForServicePrincipal"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "IAM role for Amazon Q Business S3 Access",
+    "RoleName": "QBusinessS3Role",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QBusinessS3Role/Resource"
+   }
+  },
+  "QBusinessS3RoleDefaultPolicy677A1EA8": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:GetObject",
+       "Condition": {
+        "StringEquals": {
+         "aws:ResourceAccount": {
+          "Ref": "AWS::AccountId"
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Ref": "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputsamplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBArn"
+          },
+          "/*"
+         ]
+        ]
+       },
+       "Sid": "AllowsAmazonQToGetObjectfromS3"
+      },
+      {
+       "Action": "s3:ListBucket",
+       "Condition": {
+        "StringEquals": {
+         "aws:ResourceAccount": {
+          "Ref": "AWS::AccountId"
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Resource": {
+        "Ref": "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputsamplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBArn"
+       },
+       "Sid": "AllowsAmazonQToListS3Buckets"
+      },
+      {
+       "Action": [
+        "qbusiness:BatchPutDocument",
+        "qbusiness:BatchDeleteDocument"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:qbusiness:us-east-1:",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":application/",
+          {
+           "Fn::GetAtt": [
+            "Qapp",
+            "ApplicationId"
+           ]
+          },
+          "/index/",
+          {
+           "Fn::GetAtt": [
+            "QIndex",
+            "IndexId"
+           ]
+          }
+         ]
+        ]
+       },
+       "Sid": "AllowsAmazonQToIngestDocuments"
+      },
+      {
+       "Action": [
+        "qbusiness:PutGroup",
+        "qbusiness:CreateUser",
+        "qbusiness:DeleteGroup",
+        "qbusiness:UpdateUser",
+        "qbusiness:ListGroups"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:qbusiness:us-east-1:",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":application/",
+           {
+            "Fn::GetAtt": [
+             "Qapp",
+             "ApplicationId"
+            ]
+           }
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:qbusiness:us-east-1:",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":application/",
+           {
+            "Fn::GetAtt": [
+             "Qapp",
+             "ApplicationId"
+            ]
+           },
+           "/index/",
+           {
+            "Fn::GetAtt": [
+             "QIndex",
+             "IndexId"
+            ]
+           }
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:qbusiness:us-east-1:",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":application/",
+           {
+            "Fn::GetAtt": [
+             "Qapp",
+             "ApplicationId"
+            ]
+           },
+           "/index/",
+           {
+            "Fn::GetAtt": [
+             "QIndex",
+             "IndexId"
+            ]
+           },
+           "/data-source/*"
+          ]
+         ]
+        }
+       ],
+       "Sid": "AllowsAmazonQToCallPrincipalMappingAPIs"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "QBusinessS3RoleDefaultPolicy677A1EA8",
+    "Roles": [
+     {
+      "Ref": "QBusinessS3Role807810E1"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QBusinessS3Role/DefaultPolicy/Resource"
+   }
+  },
+  "QDataSource": {
+   "Type": "AWS::QBusiness::DataSource",
+   "Properties": {
+    "ApplicationId": {
+     "Fn::GetAtt": [
+      "Qapp",
+      "ApplicationId"
+     ]
+    },
+    "Configuration": {
+     "type": "S3",
+     "syncMode": "FULL_CRAWL",
+     "syncschedule": "cron(0/5 * * * ? *)",
+     "connectionConfiguration": {
+      "repositoryEndpointMetadata": {
+       "BucketName": {
+        "Ref": "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputsamplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBRef"
+       }
+      }
+     },
+     "repositoryConfigurations": {
+      "document": {
+       "fieldMappings": [
+        {
+         "indexFieldName": "s3_document_id",
+         "indexFieldType": "STRING",
+         "dataSourceFieldName": "s3_document_id"
+        }
+       ]
+      }
+     }
+    },
+    "DisplayName": {
+     "Ref": "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputsamplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBRef"
+    },
+    "IndexId": {
+     "Fn::GetAtt": [
+      "QIndex",
+      "IndexId"
+     ]
+    },
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "QBusinessS3Role807810E1",
+      "Arn"
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QDataSource"
+   }
+  },
+  "QBusinessKmsKey69C46BFF": {
+   "Type": "AWS::KMS::Key",
+   "Properties": {
+    "Description": "KMS key for QBusiness WebExperience",
+    "EnableKeyRotation": true,
+    "KeyPolicy": {
+     "Statement": [
+      {
+       "Action": "kms:*",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":root"
+          ]
+         ]
+        }
+       },
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QBusinessKmsKey/Resource"
+   }
+  },
+  "QBusinessKmsKeyAliasB59E742C": {
+   "Type": "AWS::KMS::Alias",
+   "Properties": {
+    "AliasName": "alias/QBusinessKmsKey",
+    "TargetKeyId": {
+     "Fn::GetAtt": [
+      "QBusinessKmsKey69C46BFF",
+      "Arn"
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QBusinessKmsKey/Alias/Resource"
+   }
+  },
+  "QWebExperienceRole1223F6FA": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "application.qbusiness.amazonaws.com"
+       }
+      },
+      {
+       "Action": [
+        "sts:AssumeRole",
+        "sts:SetContext"
+       ],
+       "Condition": {
+        "StringEquals": {
+         "aws:SourceAccount": {
+          "Ref": "AWS::AccountId"
+         }
+        },
+        "ArnEquals": {
+         "aws:SourceArn": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:aws:qbusiness:us-east-1:",
+            {
+             "Ref": "AWS::AccountId"
+            },
+            ":application/",
+            {
+             "Fn::GetAtt": [
+              "Qapp",
+              "ApplicationId"
+             ]
+            }
+           ]
+          ]
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "application.qbusiness.amazonaws.com"
+       },
+       "Sid": "QBusinessTrustPolicy"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "IAM role for Amazon Q Business WebExperience",
+    "RoleName": "QWebExperienceRole",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QWebExperienceRole/Resource"
+   }
+  },
+  "QWebExperienceRoleDefaultPolicyB4A36D23": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "qbusiness:Chat",
+        "qbusiness:ChatSync",
+        "qbusiness:ListMessages",
+        "qbusiness:ListConversations",
+        "qbusiness:DeleteConversation",
+        "qbusiness:PutFeedback",
+        "qbusiness:GetWebExperience",
+        "qbusiness:GetApplication",
+        "qbusiness:ListPlugins",
+        "qbusiness:GetChatControlsConfiguration",
+        "qbusiness:ListRetrievers",
+        "qbusiness:GetRetriever"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:qbusiness:us-east-1:",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":application/",
+           {
+            "Fn::GetAtt": [
+             "Qapp",
+             "ApplicationId"
+            ]
+           }
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:qbusiness:us-east-1:",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":application/",
+           {
+            "Fn::GetAtt": [
+             "Qapp",
+             "ApplicationId"
+            ]
+           },
+           "/retriever/*"
+          ]
+         ]
+        }
+       ],
+       "Sid": "QBusinessGeneralPermissions"
+      },
+      {
+       "Action": "kms:Decrypt",
+       "Condition": {
+        "StringLike": {
+         "kms:ViaService": "qbusiness.us-east-1.amazonaws.com"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "QBusinessKmsKey69C46BFF",
+         "Arn"
+        ]
+       },
+       "Sid": "QBusinessKMSDecryptPermissions"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "QWebExperienceRoleDefaultPolicyB4A36D23",
+    "Roles": [
+     {
+      "Ref": "QWebExperienceRole1223F6FA"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QWebExperienceRole/DefaultPolicy/Resource"
+   }
+  },
+  "QWebExperience": {
+   "Type": "AWS::QBusiness::WebExperience",
+   "Properties": {
+    "ApplicationId": {
+     "Fn::GetAtt": [
+      "Qapp",
+      "ApplicationId"
+     ]
+    },
+    "Origins": [
+     "https://main.your-app-url.amplifyapp.com"
+    ],
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "QWebExperienceRole1223F6FA",
+      "Arn"
+     ]
+    },
+    "SamplePromptsControlMode": "ENABLED",
+    "Subtitle": "AnyCompany Generative AI Assistant",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "Title": "AnyCompany Q App",
+    "WelcomeMessage": "Welcome to your Amazon Q Business Application!"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QWebExperience"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/yWMzQrCMBAGn6X3dG2LF4+iHkQQqQePkqYrrE2Tmk39IeTdJelpZr6FbaDerKEq5IdL1Q+lpg7CGdljf/VSDUJ++B5e3cxkkBnC7mG206RJSU/WiN3DHE2P3yQtekf4RpdiL7282tkpTHXD7vCd0BEahVGQHCG0Vudb5sVqUr+Ui0UxjAzhhHlL2GqSnCJLjKJFzv+jMLZHePLq3dTQQFU8mah0s/E0IrQL/0d/v8PpAAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputsamplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBArn": {
+   "Type": "String"
+  },
+  "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputsamplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBRef": {
+   "Type": "String"
+  }
+ },
+ "Outputs": {
+  "amplifyamplifyybenaminsandboxe9aa1f86c2CustomResourceStackQWebExperience119EB04ADefaultEndpoint": {
+   "Value": {
+    "Fn::GetAtt": [
+     "QWebExperience",
+     "DefaultEndpoint"
+    ]
+   }
+  }
+ }
+}

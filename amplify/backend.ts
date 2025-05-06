@@ -29,7 +29,7 @@ export const qapp = new q.CfnApplication(customResource, "Qapp", {
   identityType: "AWS_IAM_IDC",
   roleArn: `arn:aws:iam::${customResource.account}:role/aws-service-role/qbusiness.amazonaws.com/AWSServiceRoleForQBusiness`,
   /* REPLACE WITH YOUR IAM IDENTITY CENTER ARN */
-  identityCenterInstanceArn: "arn:aws:sso:::instance/ssoins-<YOUR-IAM-IDC-ARN>",
+  identityCenterInstanceArn: "arn:aws:sso:::instance/ssoins-722310414b9f5366",
 });
 
 
@@ -296,7 +296,7 @@ export const qWebExperience = new q.CfnWebExperience(customResource, "QWebExperi
   applicationId: qapp.attrApplicationId,
   origins: [
     /* REPLACE WITH YOUR AMPLIFY DOMAIN ENDPOINT */
-    "https://main.<APP_URL>.amplifyapp.com",
+    "https://main.your-app-url.amplifyapp.com",
   ],
   samplePromptsControlMode: "ENABLED",
   subtitle: "AnyCompany Generative AI Assistant",

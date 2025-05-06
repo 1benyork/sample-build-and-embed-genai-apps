@@ -1,0 +1,523 @@
+{
+  "version": "41.0.0",
+  "artifacts": {
+    "amplify-amplify-ybenamin-sandbox-e9aa1f86c2.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "amplify-amplify-ybenamin-sandbox-e9aa1f86c2": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2.template.json",
+        "terminationProtection": false,
+        "tags": {
+          "amplify:deployment-type": "sandbox",
+          "created-by": "amplify"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d633490e8ffab998e3bb82498c37426251fb2837a13bda2b06d25731a12265f9.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "amplify-amplify-ybenamin-sandbox-e9aa1f86c2.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "amplify-amplify-ybenamin-sandbox-e9aa1f86c2.assets"
+      ],
+      "metadata": {
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "amplify:deployment-type",
+                "Value": "sandbox"
+              },
+              {
+                "Key": "created-by",
+                "Value": "amplify"
+              }
+            ]
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/deploymentType": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deploymentType"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/region": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "region"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyAuth/UserPool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthUserPool4BA7F805"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyAuth/UserPoolAppClient/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthUserPoolAppClient2626C6F8"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyAuth/IdentityPool": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthIdentityPool3FDE84CC"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyAuth/authenticatedUserRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthauthenticatedUserRoleD8DA3689"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyAuth/unauthenticatedUserRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthunauthenticatedUserRole2B524D9E"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyAuth/IdentityPoolRoleAttachment": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthIdentityPoolRoleAttachment045F17C8"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthUserPool07B5FE63Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthUserPool07B5FE63Ref"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthUserPoolAppClientC8729F50Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthUserPoolAppClientC8729F50Ref"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthIdentityPool2A194876Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthIdentityPool2A194876Ref"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth/amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthauthenticatedUserRole2E1F3556Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthauthenticatedUserRole2E1F3556Ref"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/auth.NestedStack/auth.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "auth179371D7"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/userPoolId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userPoolId"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/webClientId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "webClientId"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/identityPoolId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "identityPoolId"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/authRegion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "authRegion"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/allowUnauthenticatedIdentities": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "allowUnauthenticatedIdentities"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/signupAttributes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "signupAttributes"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/usernameAttributes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "usernameAttributes"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/verificationMechanisms": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "verificationMechanisms"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/passwordPolicyMinLength": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "passwordPolicyMinLength"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/passwordPolicyRequirements": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "passwordPolicyRequirements"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/mfaConfiguration": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mfaConfiguration"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/mfaTypes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mfaTypes"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/socialProviders": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "socialProviders"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/oauthCognitoDomain": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "oauthCognitoDomain"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/oauthScope": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "oauthScope"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/oauthRedirectSignIn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "oauthRedirectSignIn"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/oauthRedirectSignOut": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "oauthRedirectSignOut"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/oauthResponseType": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "oauthResponseType"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/oauthClientId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "oauthClientId"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/groups": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "groups"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/q-datasource-bucket/Bucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "qdatasourcebucketBucket71629FEB"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/q-datasource-bucket/Bucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "qdatasourcebucketBucketPolicy54F3DB2F"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/q-datasource-bucket/Bucket/AutoDeleteObjectsCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "qdatasourcebucketBucketAutoDeleteObjectsCustomResourceE32C72BA"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/LatestNodeRuntimeMap": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LatestNodeRuntimeMap"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+          {
+            "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+            "data": true
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/Q_DATASOURCE_BUCKET_BUCKET_NAMEParameter/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QDATASOURCEBUCKETBUCKETNAMEParameter2460DD57"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/amplify-amplify-ybenamin-sandbox-e9aa1f86c2--storageAccess4/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyamplifyybenaminsandboxe9aa1f86c2storageAccess4C1AD8858"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/reference-to-amplifyamplifyybenaminsandboxe9aa1f86c2authNestedStackauthNestedStackResourceF30DC61EOutputs.amplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthauthenticatedUserRole2E1F3556Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2authNestedStackauthNestedStackResourceF30DC61EOutputsamplifyamplifyybenaminsandboxe9aa1f86c2authamplifyAuthauthenticatedUserRole2E1F3556Ref"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/amplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBArn"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage/amplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBRef": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBRef"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storage.NestedStack/storage.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "storage0EC3F24A"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/Qapp": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Qapp"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QApplicationServiceAccessRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QApplicationServiceAccessRoleC2B6008A"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QIndex": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QIndex"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QRetriever": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QRetriever"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QBusinessS3Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QBusinessS3Role807810E1"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QBusinessS3Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QBusinessS3RoleDefaultPolicy677A1EA8"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QDataSource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QDataSource"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QBusinessKmsKey/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QBusinessKmsKey69C46BFF"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QBusinessKmsKey/Alias/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QBusinessKmsKeyAliasB59E742C"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QWebExperienceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QWebExperienceRole1223F6FA"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QWebExperienceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QWebExperienceRoleDefaultPolicyB4A36D23"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/QWebExperience": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "QWebExperience"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/reference-to-amplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputs.amplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputsamplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBArn"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/reference-to-amplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputs.amplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBRef": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifyamplifyybenaminsandboxe9aa1f86c2storageNestedStackstorageNestedStackResource36428CFFOutputsamplifyamplifyybenaminsandboxe9aa1f86c2storageqdatasourcebucketBucket0DB64AEBRef"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack/amplifyamplifyybenaminsandboxe9aa1f86c2CustomResourceStackQWebExperience119EB04ADefaultEndpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyamplifyybenaminsandboxe9aa1f86c2CustomResourceStackQWebExperience119EB04ADefaultEndpoint"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CustomResourceStack.NestedStack/CustomResourceStack.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomResourceStackDA21D617"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/customOutputs": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "customOutputs"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/storageRegion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "storageRegion"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/bucketName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bucketName"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/buckets": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "buckets"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/amplify-amplify-ybenamin-sandbox-e9aa1f86c2/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "amplify-amplify-ybenamin-sandbox-e9aa1f86c2"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  },
+  "minimumCliVersion": "2.1005.0"
+}
