@@ -296,7 +296,7 @@ export const qWebExperience = new q.CfnWebExperience(customResource, "QWebExperi
   applicationId: qapp.attrApplicationId,
   origins: [
     /* REPLACE WITH YOUR AMPLIFY DOMAIN ENDPOINT */
-    "https://main.d34bxanjhhvf5j.amplifyapp.com/",
+    "https://main.d34bxanjhhvf5j.amplifyapp.com",
   ],
   samplePromptsControlMode: "ENABLED",
   subtitle: "AnyCompany Generative AI Assistant",
